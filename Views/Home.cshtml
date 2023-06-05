@@ -1,0 +1,54 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
+@{
+	Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="IE=edge,chrome=1' http-equiv='X-UA-Compatible">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title></title>
+		<!--css here-->
+		<!--<link rel="stylesheet" type="text/css" href="/css/style.css">-->
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				color: @Model.Colour;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<h1>@Model.Name</h1>
+		<h2>@Model.Title</h2>
+
+		@{
+		}
+
+		@if(Model.Names != null && Model.Names.Any())
+		{
+			<ul>
+				@foreach(var name in Model.Names)
+				{
+					<li>@name</li>
+				}
+			</ul>
+		}
+
+		@if(Model.Image != null && !Model.HideTheImage) {
+			<img src="@Model.Image.Url()" alt="Pie Image" style="width: 300px; height: auto;">
+		}
+
+		<p>@Model.BodyText</p>
+
+	</body>
+</html>
